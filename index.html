@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
     <head>
         <meta charset="utf-8" />
         <title>LPlayer</title>
-        <script id="js"></script>
-        <link id="css" rel="stylesheet" />
+        <link rel="stylesheet" href="index.css" />
+        <script src="index.js" async></script>
     </head>
     <body>
-        <h1 id="title">LPlayer</h1>
-        <input type="text" id="musicurl" placeholder="请输入歌曲链接" /><span class="placeholder">&nbsp;&nbsp;或&nbsp;&nbsp;</span><input type="file" placeholder="选择一个文件" /><br />
-        <input type="checkbox" id="togglelrc" onchange="togglelrc()" /><span class="placeholder" onclick="document.getElementById('togglelrc').click()">歌词</span>
-        <input type="text" id="lrcurl" placeholder="请输入歌词链接" hidden />
+        <div id="title">LPlayer</div>
+        <div id="main">
+            <div id="controlbox">
+                <form hidden action="index.html">
+                    
+                </form>
+                <button onclick="file()">载入音乐文件</button>或
+            </div>
+            <div id="contentbox" hidden>
+                <p>lrc</p>
+            </div>
+        </div>
     </body>
-    <script>
-        document.getElementById("css").href = "index.css?v=" + document.lastModified;
-        document.getElementById("js").src = "index.js?v=" + document.lastModified;
-        function togglelrc(){
-            document.getElementById("lrcurl").hidden = !document.getElementById("lrcurl").hidden;
-        }
-    </script>
 </html>
