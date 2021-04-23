@@ -9,11 +9,12 @@
     <body>
         <div id="title">LPlayer</div>
         <div id="main">
+            <input type="file" id="file" accept=".mp3,.ogg,.flac,.wav" onchange="fileRead()" hidden />
+            <input type="file" id="lrc" accept=".lrc" onchange="lrcRead()" hidden />
+            <audio id="player" hidden></audio>
             <div id="controlbox">
-                <form hidden action="index.html">
-                    
-                </form>
-                <button onclick="file()">载入音乐文件</button>或
+                <button onclick="startOpenFile()">载入音乐文件</button><br />
+                <input type="text" id="musicurl" placeholder="输入歌曲链接" /><button onclick="pasteurl()">粘贴</button>
             </div>
             <div id="contentbox" hidden>
                 <p>lrc</p>
