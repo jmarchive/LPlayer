@@ -2,7 +2,9 @@ body{
     margin: 0;
     text-align: center;
     line-height: 1.4;
-    overflow: hidden;
+}
+body::-webkit-scrollbar{
+    width: 0;
 }
 #title{
     user-select: none;
@@ -33,7 +35,7 @@ body{
     float: right;
     width: 800px;
 }
-button{
+.ordinary{
     background-color: rgb(151, 200, 228);
     transition: background-color 0.5s;
     -o-transition: background-color 0.5s;
@@ -45,11 +47,55 @@ button{
     padding: 8px 18px 8px 18px;
     margin: 5px;
 }
-button:hover{
+.ordinary:hover{
     background-color: rgb(88, 176, 226);
 }
-button:focus{
+.ordinary:focus{
     background-color: rgb(38, 146, 209);
+}
+.ordinary[disabled]:hover{
+    background-color: rgb(151, 200, 228);
+}
+.modern{
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    background-color: #00000000;
+    font-size: 20px;
+    transition: background-color 0.4s;
+    -o-transition: background-color 0.4s;
+    -moz-transition: background-color 0.4s;
+    -webkit-transition: background-color 0.4s;
+    border: none;
+}
+.modern:hover{
+    background-color: rgb(195, 214, 255);
+}
+#musicurl,#lrcurl{
+    font-size: 16px;
+    width: 100px;
+}
+input[type="text"]{
+    margin: 3px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 2px black;
+    transition: border 0.3s;
+    -o-transition: border 0.3s;
+    -moz-transition: border 0.3s;
+    -webkit-transition: border 0.3s;
+}
+input[type="text"]:hover{
+    border: solid 2px grey;
+}
+input[type="text"]:focus{
+    border: solid 2px #5c6be0;
+}
+input[type="text"][disabled]{
+    border: solid 2px grey;
+}
+input[type="text"][disabled]:hover{
+    border: solid 2px grey;
 }
 @-webkit-keyframes dc{
     0% {color: #00000000;top:-10px;}

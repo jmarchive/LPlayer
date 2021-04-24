@@ -4,17 +4,21 @@
         <meta charset="utf-8" />
         <title>LPlayer</title>
         <link rel="stylesheet" href="index.css" />
+        <script src="https://cdn.jsdelivr.net/npm/jsmediatags/dist/jsmediatags.min.js"></script>
         <script src="index.js" async></script>
     </head>
     <body>
         <div id="title">LPlayer</div>
         <div id="main">
-            <input type="file" id="file" accept=".mp3,.ogg,.flac,.wav" onchange="fileRead()" hidden />
+            <input type="file" id="file" accept=".mp3,.ogg,.flac,.wav,.m4a" onchange="fileRead()" hidden />
             <input type="file" id="lrc" accept=".lrc" onchange="lrcRead()" hidden />
             <audio id="player" hidden></audio>
             <div id="controlbox">
-                <button onclick="startOpenFile()">载入音乐文件</button><br />
-                <input type="text" id="musicurl" placeholder="输入歌曲链接" /><button onclick="pasteurl()">粘贴</button>
+                <input type="text" ondblclick="musicurlTips()" id="musicurl" placeholder="粘贴歌曲链接" /><button class="ordinary" onclick="startOpenFile()">开始播放</button><br />
+                <input type="text" ondblclick="lrcurlTips()" id="lrcurl" placeholder="粘贴歌词链接" disabled><button class="ordinary" onclick="startOpenlrc()" disabled>载入歌词</button><br />
+                <button class="modern" id="plpa"></button>
+                <br /><br />
+                <button class="ordinary" id="settings">设置</button>
             </div>
             <div id="contentbox" hidden>
                 <p>lrc</p>
