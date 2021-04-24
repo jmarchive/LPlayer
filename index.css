@@ -46,6 +46,7 @@ body::-webkit-scrollbar{
     border-radius: 5px;
     padding: 8px 18px 8px 18px;
     margin: 5px;
+    cursor: pointer;
 }
 .ordinary:hover{
     background-color: rgb(88, 176, 226);
@@ -67,6 +68,7 @@ body::-webkit-scrollbar{
     -moz-transition: background-color 0.4s;
     -webkit-transition: background-color 0.4s;
     border: none;
+    cursor: pointer;
 }
 .modern:hover{
     background-color: rgb(195, 214, 255);

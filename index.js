@@ -29,6 +29,7 @@ function resize(show){
                 ctrl.style.width = main.offsetWidth - 30 + "px";
                 ctnt.style.width = ctrl.style.width;
                 document.body.style.overflow = "auto";
+                ctnt.style.marginTop = "50px";
             }
             else{
                 //纵布局->横布局
@@ -37,6 +38,7 @@ function resize(show){
                 document.body.style.overflow = "hidden";
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
+                ctnt.style.marginTop = "0";
                 if(ctnt.hidden){
                     ctrl.style.width = main.style.width;
                 }
@@ -61,6 +63,7 @@ function resize(show){
             document.body.style.overflow = "hidden";
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
+            ctnt.style.marginTop = "0";
             if(ctnt.hidden){
                 ctrl.style.width = main.style.width;
             }
@@ -118,20 +121,7 @@ function fileRead(url){
     if(url != null){
         p.src = url;
         p.play();
-        new window.jsmediatags.Reader(url).read({
-            onSuccess:function(tag){
-                album = tag.tags.album;
-                artist = tag.tags.artist;
-                lyrics = tag.tags.lyrics.lyrics;
-                cover = tag.tags.picture.data;
-                musicname = tag.tags.title;
-                document.title = artist + " - " + musicname;
-                ctnt.innerText = lyrics;
-            },
-            onError:function(err){
-                console.log(err.type,err.info);
-            }
-        });
+        jsmediaRead(url);
         playUI(true);
     }
     else{
@@ -145,25 +135,28 @@ function fileRead(url){
         p.src = URL.createObjectURL(file);
         fpicker.files[0] = null;
         p.play();
-        new window.jsmediatags.Reader(file).read({
-            onSuccess:function(tag){
-                album = tag.tags.album;
-                artist = tag.tags.artist;
-                lyrics = tag.tags.lyrics.lyrics;
-                cover = tag.tags.picture.data;
-                musicname = tag.tags.title;
-                document.title = artist + " - " + musicname;
-                ctnt.innerText = lyrics;
-            },
-            onError:function(err){
-                console.log(err.type,err.info);
-            }
-        });
+        jsmediaRead(file);
         playUI(true);
     }
 }
 function jsmediaRead(obj){
-
+    new window.jsmediatags.Reader(obj).read({
+        onSuccess:function(tag){
+            console.log(tag);
+            artist = tag.tags.artist;
+            cover = tag.tags.picture.data;
+            musicname = tag.tags.title;
+            album = tag.tags.album;
+            document.title = artist + " - " + musicname;
+            if(tag.tags.lyrics.lyrics != null){
+                lyrics = tag.tags.lyrics.lyrics;
+                ctnt.innerText = lyrics;
+            }
+        },
+        onError:function(err){
+            console.log(err.type,err.info);
+        }
+    });
 }
 //onplay
 var player = document.getElementById("player");
