@@ -98,8 +98,8 @@ input[type="text"][disabled]:hover{
     border: solid 2px grey;
 }
 @-webkit-keyframes dc{
-    0% {color: #00000000;top:-10px;}
-    0% {color:#000000;top:10px;}
+    from {color: #00000000;top:-10px;}
+    to {color:#000000;top:10px;}
 }
 @keyframes dc{
     from {color: #00000000;top:-10px;}
@@ -107,4 +107,13 @@ input[type="text"][disabled]:hover{
 }
 *{
     outline: none;
+}
+.rainbow{
+    color: red;
+    animation: rainbow 4s infinite;
+}
+@keyframes rainbow{
+    0% {color: #FF0000;}
+    33% {color: #00FF00;}
+    66% {color: #0000FF;}
 }

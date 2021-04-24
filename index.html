@@ -2,13 +2,15 @@
 <html lang="zh-cn">
     <head>
         <meta charset="utf-8" />
+        <meta http-equiv="Access-Control-Allow-Headers: If-Modified-Since, Range" />
+        <meta http-equiv="Access-Control-Expose-Headers: Content-Length, Content-Range" />
         <title>LPlayer</title>
         <link rel="stylesheet" href="index.css" />
-        <script src="https://cdn.jsdelivr.net/npm/jsmediatags/dist/jsmediatags.min.js"></script>
+        <script src="jsmediatags.min.js"></script>
         <script src="index.js" async></script>
     </head>
     <body>
-        <div id="title">LPlayer</div>
+        <div id="title" ondblclick="about()">LPlayer</div>
         <div id="main">
             <input type="file" id="file" accept=".mp3,.ogg,.flac,.wav,.m4a" onchange="fileRead()" hidden />
             <input type="file" id="lrc" accept=".lrc" onchange="lrcRead()" hidden />

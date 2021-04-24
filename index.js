@@ -113,7 +113,7 @@ function startOpenFile(){
         document.getElementById("file").click();
     }
 }
-function fileRead(url){       
+function fileRead(url){
     var p = document.getElementById("player");
     if(url != null){
         p.src = url;
@@ -141,7 +141,9 @@ function fileRead(url){
         if(file == null){
             return;
         }
+        p.src = "";
         p.src = URL.createObjectURL(file);
+        fpicker.files[0] = null;
         p.play();
         new window.jsmediatags.Reader(file).read({
             onSuccess:function(tag){
@@ -177,4 +179,16 @@ function playUI(isstart){
 //tips
 function musicurlTips(){
     alert("粘贴歌曲链接，包括http(s)://。\r\n————特殊用法————\r\n网易云音乐：输入歌曲ID，然后在末尾加上n，即可解析歌曲。");
+}
+function lrcurlTips(){
+    alert("");
+}
+function about(){
+    var title = document.getElementById("title");
+    if(title.innerText == "LPlayer"){
+        title.innerHTML = "<span class='rainbow'>LPlayer</span> - Made By <a href='https://ljm.im' style='color:#5c6be0;text-decoration:none'>LJM12914</a> With ❤ To Music."
+    }
+    else{
+        title.innerText = "LPlayer";
+    }
 }
