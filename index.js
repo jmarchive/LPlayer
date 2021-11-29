@@ -106,6 +106,14 @@ function startOpenFile(){
             document.getElementById("musicurl").value = "";
             fileRead("https://music.163.com/song/media/outer/url?id=" + musicurl.replace("n","") + ".mp3");
         }
+        else if(musicurl.search(/^[1-9]\d*k$/) != -1){//酷我通用API
+            document.getElementById("musicurl").value = "";
+            fileRead("https://www.kuwo.cn/api/v1/www/music/playUrl?mid=" + musicurl.replace("k",""));
+        }
+        else if(musicurl.search(/^[0-9a-f]*g$/) != -1){//酷狗通用API
+            document.getElementById("musicurl").value = "";
+            fileRead("https://wwwapi.kugou.com/yy/index.php?r=play/getdata&hash=" + musicurl.replace("g",""));
+        }
         else{
             if(!confirm("输入的歌曲链接不符合格式。\r\n1.可能是没有http或https。\r\n2.可能是使用了不支持的文件格式。\r\n仅支持mp3、flac、ogg、wav、m4a文件。\r\n单击“取消”以清空，“确定”以手动修改链接。")){
                 document.getElementById("musicurl").value = "";
@@ -171,7 +179,7 @@ function playUI(isstart){
 });*/
 //tips
 function musicurlTips(){
-    alert("粘贴歌曲链接，包括http(s)://。\r\n————特殊用法————\r\n网易云音乐：输入歌曲ID，然后在末尾加上n，即可解析歌曲。");
+    alert("粘贴歌曲链接，包括http(s)://。\r\n————特殊用法————\r\n网易云音乐：输入歌曲ID，然后在末尾加上n，即可解析歌曲。\r\n酷我音乐：输入歌曲ID，然后在末尾加上w，即可解析歌曲。\r\n酷狗音乐：输入歌曲hash，然后在末尾加上g，即可解析歌曲。");
 }
 function lrcurlTips(){
     alert("");
